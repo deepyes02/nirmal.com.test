@@ -4,8 +4,8 @@
  * @package WordPress
  * @subpackage Aashura
  * @since Aashura 1.0
+ * @author deepesh
  */
-
  // Important functions that can run before the init hook
 
  /**
@@ -18,25 +18,26 @@ if ( ! function_exists( 'aasura_myfirsttheme_setup' ) ) {
   function aasura_myfirsttheme_setup(){
     register_nav_menus( array (
       'primary'   => __('Primary Menu', 'aashura'),
+      #add more menus here
     ));
   };
 }
-
 /**
  * Add custom classes to 'li' element of nav object
  * @author deepesh
  * @since Aashura 1.0
+ * @return Array
  */
-add_filter('nav_menu_css_class', 'aasura_add_additional_li_classes', 1, 3);
 function aasura_add_additional_li_classes($classes, $item, $args){
   if($args->theme_location == 'primary'){
     $classes[] = $args->add_li_class;
   }
   return $classes;
 }
-
+add_filter('nav_menu_css_class', 'aasura_add_additional_li_classes', 1, 3);
 /**
- * Add class to href nav menus, i.e a tags, or anchor tags
+ * Add custom classes to 'a' <anchor> element of nav object
+ * e.g nav ul li a
  * @package Aashura
  * @return Array 
  */

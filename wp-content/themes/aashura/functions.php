@@ -9,14 +9,14 @@
  * @since Aashura 1.0
  * @author deepesh dhakal
  */
-
-/**GLOBAL VARIABLES*/
-define ('ROOTDIR', get_template_directory());
-define ('ROOTDIRURL', get_template_directory_uri());
-
-//Very first functions (--even before init) that either enable theme support, and/or mutate elements
-require_once(ROOTDIR . '/inc/navigation_design.public.php');
-
-// Enqueue Public JS/CSS libraries and scripts.
-require_once(ROOTDIR . '/inc/enqueue_scripts.public.php');
-
+//Very first functions (--even before init)
+//Declare the GLOBAL CONSTANTS
+require_once( get_template_directory() . '/inc/globar-var.admin.php');
+//Wordpress Theme Support - Enabling default features
+require_once(get_template_directory() . '/inc/addThemeSupport.php');
+//navigation menu creation with custom classes and elements.
+require_once(get_template_directory() . '/inc/navigation_design.public.php');
+//admin styles/scripts enqueue
+require(get_template_directory() . '/inc/enqueue.admin.php');
+//Enqueue -  Public JS/CSS libraries and scripts.
+require_once(get_template_directory() . '/inc/enqueue.public.php');

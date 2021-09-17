@@ -1,2 +1,3 @@
-<?php
-echo "Hello world from the index file";
+<?php get_header();?>
+
+<?php get_footer();?>
