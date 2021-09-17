@@ -1,49 +1,22 @@
 <?php
-
-/**GLOBAL VARIABLES */
-define ('ROOTDIRURL', get_template_directory());
-
 /**
- * Functions and definitions
+ * Wordpress Development Tools
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WordPress
- * @subpackage Aashura
+ * @package AashuraWordpressTheme
+ * @subpackage aashura
  * @since Aashura 1.0
+ * @author deepesh dhakal
  */
 
- require_once(ROOTDIRURL . '/inc/navigation_design.public.php');
+/**GLOBAL VARIABLES*/
+define ('ROOTDIR', get_template_directory());
+define ('ROOTDIRURL', get_template_directory_uri());
 
-if ( ! function_exists( 'aasura_myfirsttheme_setup' ) ) {
-  /**
-  * Sets up theme defaults and registers support for various WordPress features
-  *  It is important to set up these functions before the init hook so that none of these
-  *  features are lost.
- * @since Aashura 1.0
-  */
-  function aasura_myfirsttheme_setup(){
-    register_nav_menus( array (
-      'primary'   => __('Primary Menu', 'aashura'),
-    ));
-  };
-}
-add_action('after_setup_theme', 'aasura_myfirsttheme_setup');
-  //add additional classs to li
-  function aasura_add_additional_li_classes($classes, $item, $args){
-    if($args->theme_location == 'primary'){
-      $classes[] = $args->add_li_class;
-    }
-    return $classes;
-  }
-  add_filter('nav_menu_css_class', 'aasura_add_additional_li_classes', 1, 3);
+//Very first functions (--even before init) that either enable theme support, and/or mutate elements
+require_once(ROOTDIR . '/inc/navigation_design.public.php');
 
+// Enqueue Public JS/CSS libraries and scripts.
+require_once(ROOTDIR . '/inc/enqueue_scripts.public.php');
 
-  // adding custom class to nav link items
-  add_filter( 'nav_menu_link_attributes', 'aasura_add_class_href_nav_menu', 10, 3 );
-
-function aasura_add_class_href_nav_menu( $atts, $item, $args ) {
-    $class = 'nav-link scrollto'; // or something based on $item
-    $atts['class'] = $class;
-    return $atts;
-}
