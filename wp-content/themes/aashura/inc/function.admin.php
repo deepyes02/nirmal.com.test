@@ -23,6 +23,8 @@ function aashura_custom_settings()
   //settings group personal
   register_setting('aasura_settings_personal', 'hero_title');
   register_setting('aasura_settings_personal', 'hero_subtitle');
+  register_setting('aasura_settings_personal', 'hero_get_started_link');
+  register_setting('aasura_settings_personal', 'hero_youtube_link');
 
   //settings section
   add_settings_section('aashura_settings_section_landing', 'Landing Page', 'aashura_sidebar_options', 'aashura_general');
@@ -38,11 +40,26 @@ function aashura_settings_field_hero()
 {
   $hero_title = esc_attr(get_option('hero_title'));
   $hero_subtitle = esc_attr(get_option('hero_subtitle'));
+  $hero_get_started_link = esc_attr(get_option('hero_get_started_link'));
+  $hero_youtube_link = esc_attr(get_option('hero_youtube_link'));
   ?>
-  <p class="description">Type in your title and subtitle</p>
+  <p class="description">Type in your title</p>
   <div>
-    <input type="text" name="hero_title" value="<?php echo $hero_title?>">
+    <input type="text" name="hero_title" value="<?php echo $hero_title?>" maxlength="50">
   </div>
+  <p class="description">Type in your subtitle</p>
+  <div>
+    <input type="text" name="hero_subtitle" value="<?php echo $hero_subtitle?>" maxlength="80">
+  </div>
+  <p class="description">Get Started Link</p>
+  <div>
+    <input type="text" name="hero_get_started_link" value="<?php echo $hero_get_started_link?>" maxlength="120">
+  </div>
+  <p class="description">YouTube Link</p>
+  <div>
+    <input type="text" name="hero_youtube_link" value="<?php echo $hero_youtube_link?>" maxlength="120">
+  </div>
+  
   <?php
 }
 function aashura_sidebar_options()

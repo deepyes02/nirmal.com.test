@@ -14,7 +14,11 @@
 require_once( get_template_directory() . '/inc/globar-var.admin.php');
 //Wordpress Theme Support - Enabling default features
 require_once(get_template_directory() . '/inc/addThemeSupport.php');
-//navigation menu creation with custom classes and elements.
+
+// Custom Post Type
+require_once(get_template_directory() . '/inc/customPostTypes/statements.php');
+require_once(get_template_directory() . '/inc/customPostTypes/services.php');
+
 // ADMIN FUNCTIONS TO ADD CUSTOM OPTIONS PAGE AND SETTING API
 require(get_template_directory() . '/inc/function.admin.php');
 require_once(get_template_directory() . '/inc/navigation_design.public.php');
