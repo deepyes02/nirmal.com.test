@@ -186,14 +186,11 @@
 
         </div>
       </div>
-
     </div>
   </section><!-- End Skills Section -->
-
   <!-- ======= Services Section ======= -->
   <section id="services" class="services section-bg">
     <div class="container" data-aos="fade-up">
-
       <div class="section-title">
         <h2>Services</h2>
         <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
