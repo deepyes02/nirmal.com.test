@@ -1,3 +1,6 @@
+<?php
+settings_errors();
+?>
 <form method="post" action="options.php">
 <!-- hidden important fields-->
 <?php settings_fields('aasura_settings_personal') ?>
