@@ -1,122 +1,20 @@
 <?php get_header(); ?>
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-        <h1><?php echo esc_attr(get_option('hero_title')) ?></h1>
-        <h2><?php echo esc_attr(get_option('hero_subtitle')) ?></h2>
-        <!-- register_setting('aasura_settings_personal', 'hero_get_started_link'); -->
-        <!-- register_setting('aasura_settings_personal', 'hero_youtube_link'); -->
-        <div class="d-flex justify-content-center justify-content-lg-start">
-          <a href="<?php echo esc_attr(get_option('hero_get_started_link')) ?>" class="btn-get-started scrollto">Get Started</a>
-          <a href="<?php echo esc_attr(get_option('hero_youtube_link')) ?>" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-        </div>
-      </div>
-      <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero-img.png" class="img-fluid animated" alt="">
-      </div>
-    </div>
-  </div>
-
-</section><!-- End Hero -->
+<?php get_template_part('template-parts/hero')?>
+<!-- End Hero -->
 <main id="main">
   <!-- ======= Cliens Section ======= -->
-  <section id="cliens" class="cliens section-bg">
-    <div class="container">
-      <div class="row" data-aos="zoom-in">
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clients/client-1.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clients/client-2.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clients/client-3.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clients/client-4.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clients/client-5.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/clients/client-6.png" class="img-fluid" alt="">
-        </div>
-      </div>
-    </div>
-  </section><!-- End Cliens Section -->
-
-  <?php
-  //get about us page
-  $page = get_page_by_path('about');
-  // echo $page->post_content;
-  ?>
-
-  <!-- ======= About Us Section ======= -->
-  <section id="about" class="about">
-    <div class="container" data-aos="fade-up">
-      <div class="section-title">
-        <h2>About Us</h2>
-      </div>
-      <div class="row content">
-        <?php echo $page->post_content ?>
-      </div>
-    </div>
-  </section><!-- End About Us Section -->
+  <?php get_template_part('template-parts/clients')?>
+  <!-- End Cliens Section -->
+  
+  <?php get_template_part('template-parts/about-us')?>
+ <!-- ======= About Us Section ======= -->
+ 
+  <!-- End About Us Section -->
 
   <!-- ======= Why Us Section ======= -->
-  <section id="why-us" class="why-us section-bg">
-    <div class="container-fluid" data-aos="fade-up">
-      <div class="row">
-        <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-          <div class="content">
-            <h3>Aashura is a really important <strong>statement we make to the world</strong></h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Duis aute irure dolor in reprehenderit.
-            </p>
-          </div>
-          <?php
-          //grab custom post type statements
-          $args = ['post_type' => 'statements', 'post_status' => 'publish', 'posts_per_page' => 8, 'order' => 'ASC'];
-          $loop = new WP_Query($args);
-          if ($loop->have_posts()) {
-            // var_dump($loop);
-          ?>
-            <div class="accordion-list">
-              <ul>
-                <?php
-                $counter = 1;
-                while ($loop->have_posts()) {
-                  $loop->the_post();
-                ?>
-                  <li>
-                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-<?php echo $counter ?>"><span><?php echo sprintf("%02d", $counter) ?></span> <?php echo get_the_title() ?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                    <div id="accordion-list-<?php echo $counter ?>" class="collapse show" data-bs-parent=".accordion-list">
-                      <p>
-                        <?php echo the_excerpt() ?>
-                      </p>
-                    </div>
-                  </li>
-                <?php
-                  $counter = $counter + 1;
-                }
-                wp_reset_postdata();
-
-                ?>
-              </ul>
-            </div>
-          <?php
-          } else {
-            echo "Please create some statements, they will appear here";
-          }
-          ?>
-        </div>
-        <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?php echo get_template_directory_uri() ?>/assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
-      </div>
-    </div>
-  </section><!-- End Why Us Section -->
+  <?php get_template_part('template-parts/why-us')?>
+  <!-- End Why Us Section -->
 
   <!-- ======= Skills Section ======= -->
   <section id="skills" class="skills">
@@ -170,7 +68,8 @@
         </div>
       </div>
     </div>
-  </section><!-- End Skills Section -->
+  </section>
+  <!-- End Skills Section -->
   <!-- ======= Services Section ======= -->
   <section id="services" class="services section-bg">
     <div class="container" data-aos="fade-up">
@@ -186,21 +85,21 @@
       if ($loop->have_posts()) {
       ?>
         <div class="row">
-        <?php
-        while($loop->have_posts()){
-          $loop->the_post();
-          $logoiconText = get_post_meta($post->ID, 'iconcode', true);
-          ?>
-           <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="<?php echo $logoiconText?>"></i></div>
-              <h4><a href="<?php echo the_permalink($post)?>"><?php echo the_title()?></a></h4>
-              <p><?php echo the_excerpt()?></p>
-            </div>
-          </div>
           <?php
-        }
-        ?>
+          while ($loop->have_posts()) {
+            $loop->the_post();
+            $logoiconText = get_post_meta($post->ID, 'iconcode', true);
+          ?>
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon-box">
+                <div class="icon"><i class="<?php echo $logoiconText ?>"></i></div>
+                <h4><a href="<?php echo the_permalink($post) ?>"><?php echo the_title() ?></a></h4>
+                <p><?php echo the_excerpt() ?></p>
+              </div>
+            </div>
+          <?php
+          }
+          ?>
         </div>
       <?php
       } else {
@@ -208,7 +107,9 @@
       }
       ?>
     </div>
-  </section><!-- End Services Section -->
+  </section>
+  
+  <!-- End Services Section -->
 
   <!-- ======= Cta Section ======= -->
   <section id="cta" class="cta">
@@ -227,7 +128,9 @@
       </div>
 
     </div>
-  </section><!-- End Cta Section -->
+  </section>
+  
+  <!-- End Cta Section -->
 
   <!-- ======= Portfolio Section ======= -->
   <section id="portfolio" class="portfolio">
@@ -248,32 +151,32 @@
       <?php
       $args = ['post_type' => 'portfolio', 'post_status' => 'publish', 'posts_per_page' => 12, 'order' => 'ASC'];
       $loop = new WP_Query($args);
-      if($loop->have_posts()){
-        ?>
+      if ($loop->have_posts()) {
+      ?>
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-        <?php
-        while ($loop->have_posts()){
-          $loop->the_post();
-          $terms = get_the_terms($post, 'type');
-          $featured_img_url = get_the_post_thumbnail_url($post, 'full');
-          $altImage = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image_alt', true);
-          // var_dump($featured_img_url);
-          // var_dump ($terms[0]->name);
-          ?>
-           <div class="col-lg-4 col-md-6 portfolio-item filter-<?php echo $terms[0]->name?>">
-          <div class="portfolio-img"><img src="<?php echo $featured_img_url?>" class="img-fluid" alt="<?php echo $altImage?>"></div>
-          <div class="portfolio-info">
-            <h4><?php echo the_title()?></h4>
-            <p><?php echo $terms[0]->name?></p>
-            <a href="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
           <?php
-        }
-        ?>
+          while ($loop->have_posts()) {
+            $loop->the_post();
+            $terms = get_the_terms($post, 'type');
+            $featured_img_url = get_the_post_thumbnail_url($post, 'full');
+            $altImage = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image_alt', true);
+            // var_dump($featured_img_url);
+            // var_dump ($terms[0]->name);
+          ?>
+            <div class="col-lg-4 col-md-6 portfolio-item filter-<?php echo $terms[0]->name ?>">
+              <div class="portfolio-img"><img src="<?php echo $featured_img_url ?>" class="img-fluid" alt="<?php echo $altImage ?>"></div>
+              <div class="portfolio-info">
+                <h4><?php echo the_title() ?></h4>
+                <p><?php echo $terms[0]->name ?></p>
+                <a href="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          <?php
+          }
+          ?>
         </div>
-        <?php
+      <?php
       } else {
         echo "<h4>Sorry no data available</h4>";
       }
@@ -295,45 +198,45 @@
       <?php
       $args = ['post_type' => 'team', 'post_status' => 'publish', 'posts_per_page' => 4, 'order' => 'ASC'];
       $loop = new WP_Query($args);
-      if($loop->have_posts()){
-        ?>
-          <div class="row">
-        <?php
-        while ($loop->have_posts()){
-          $loop->the_post();
-          $featured_img_url = get_the_post_thumbnail_url($post, 'full');
-          $altImage = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image_alt', true);
-          $job_position = get_post_meta($post->ID, 'job_position', true);
-          $twitter_url = get_post_meta($post->ID, 'twitter_profile_url', true);
-          $facebook_url = get_post_meta($post->ID, 'facebook_profile_url', true);
-          $instagram_url = get_post_meta($post->ID, 'instagram_profile_url', true);
-          $linkedin_url = get_post_meta($post->ID, 'linkedin_profile_url', true);
-          
+      if ($loop->have_posts()) {
+      ?>
+        <div class="row">
+          <?php
+          while ($loop->have_posts()) {
+            $loop->the_post();
+            $featured_img_url = get_the_post_thumbnail_url($post, 'full');
+            $altImage = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image_alt', true);
+            $job_position = get_post_meta($post->ID, 'job_position', true);
+            $twitter_url = get_post_meta($post->ID, 'twitter_profile_url', true);
+            $facebook_url = get_post_meta($post->ID, 'facebook_profile_url', true);
+            $instagram_url = get_post_meta($post->ID, 'instagram_profile_url', true);
+            $linkedin_url = get_post_meta($post->ID, 'linkedin_profile_url', true);
+
           ?>
             <div class="col-lg-6 mt-4 mt-lg-0">
-          <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-            <div class="pic"><img src="<?php echo $featured_img_url?>" class="img-fluid" alt=""></div>
-            <div class="member-info">
-              <h4><?php echo the_title();?></h4>
-              <span><?php echo $job_position?></span>
-              <p><?php echo the_excerpt()?></p>
-              <div class="social">
-                <a href="<?php echo $twitter_url ?>"><i class="ri-twitter-fill"></i></a>
-                <a href="<?php echo $facebook_url ?>"><i class="ri-facebook-fill"></i></a>
-                <a href="<?php echo $instagram_url ?>"><i class="ri-instagram-fill"></i></a>
-                <a href="<?php echo $linkedin_url ?>"> <i class="ri-linkedin-box-fill"></i> </a>
+              <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+                <div class="pic"><img src="<?php echo $featured_img_url ?>" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4><?php echo the_title(); ?></h4>
+                  <span><?php echo $job_position ?></span>
+                  <p><?php echo the_excerpt() ?></p>
+                  <div class="social">
+                    <a href="<?php echo $twitter_url ?>"><i class="ri-twitter-fill"></i></a>
+                    <a href="<?php echo $facebook_url ?>"><i class="ri-facebook-fill"></i></a>
+                    <a href="<?php echo $instagram_url ?>"><i class="ri-instagram-fill"></i></a>
+                    <a href="<?php echo $linkedin_url ?>"> <i class="ri-linkedin-box-fill"></i> </a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
           <?php
-        }
-        ?>
+          }
+          ?>
         </div>
-        <?php
+      <?php
       } else echo "<h4>Please add some team members that will appear here";
       ?>
-      </div>
+    </div>
 
     </div>
   </section><!-- End Team Section -->
@@ -411,65 +314,31 @@
           consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
           in iste officiis commodi quidem hic quas.</p>
       </div>
-
-      <div class="faq-list">
-        <ul>
+      <?php
+      $args = ['post_type' => 'faqs', 'post_status' => 'publish', 'posts_per_page' => 12, 'order' => 'ASC'];
+      $loop = new WP_Query($args);
+      if ($loop->have_posts()) {
+        ?>
+        <div class="faq-list">
+          <ul>
+        <?php
+        //code
+        $counter = 1;
+        while ($loop->have_posts()){
+          $loop->the_post();
+          ?>
           <li data-aos="fade-up" data-aos-delay="100">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-              <p>
-                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
-                gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-              </p>
+            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-<?php echo $counter?>"><?php echo the_title()?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-<?php echo $counter?>" class="collapse show" data-bs-parent=".faq-list">
+              <p><?php echo the_excerpt() ?></p>
             </div>
           </li>
-
-          <li data-aos="fade-up" data-aos-delay="200">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-                donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
-                ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li data-aos="fade-up" data-aos-delay="300">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum
-                integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt.
-                Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi
-                quis
-              </p>
-            </div>
-          </li>
-          <li data-aos="fade-up" data-aos-delay="400">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc
-                vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus
-                gravida quis blandit turpis cursus in.
-              </p>
-            </div>
-          </li>
-
-          <li data-aos="fade-up" data-aos-delay="500">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem
-              dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada
-                nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis
-                tellus in metus vulputate eu scelerisque.
-              </p>
-            </div>
-          </li>
-
-        </ul>
+          <?php
+          $counter++;
+        }?></ul></div>
+      <?php
+      } else echo "Sorry there are no FAQs available now";
+      ?>
       </div>
 
     </div>
