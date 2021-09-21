@@ -1,7 +1,8 @@
-# Find some beautiful readme template for this ##
+## Aashura ##
 
-## Wordpress Custom Theme Building ##
-Goals: Build a landing page from scratch without any plugin
+
+## Introduction ##
+Build several backend features for wordpress programatically without using any plugin.
 
 ## Clone this theme into your wordpress ##
 Clone this at the root directory (containing wp-content,wp-includes,wp-admin folders) of your wordpress project

@@ -25,7 +25,7 @@ function aashur_cpp_services(){
     'rewrite'     => true,
     'capability_type' => 'post',
     'heirarchical'  => false,
-    'supports' => ['title', 'excerpt', 'media'],
+    'supports' => ['title', 'excerpt', 'thumbnail'],
     // 'taxonomies'  => array('category'),
     'menu_position' => 2,
     'exclude_from_search' => false,
