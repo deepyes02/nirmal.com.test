@@ -18,6 +18,7 @@ require_once(get_template_directory() . '/inc/addThemeSupport.php');
 // Custom Post Type
 require_once(get_template_directory() . '/inc/customPostTypes/statements.php');
 require_once(get_template_directory() . '/inc/customPostTypes/services.php');
+require_once(get_template_directory() . '/inc/customPostTypes/portfolio.php');
 
 // meta box for services page
 require_once(get_template_directory() . '/inc/metaboxes/services.php');

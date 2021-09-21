@@ -91,16 +91,16 @@
                 while ($loop->have_posts()) {
                   $loop->the_post();
                 ?>
-                <li>
-                  <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-<?php echo $counter?>"><span><?php echo sprintf("%02d", $counter)?></span> <?php echo get_the_title()?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-<?php echo $counter?>" class="collapse show" data-bs-parent=".accordion-list">
-                    <p>
-                      <?php echo the_excerpt()?>
-                    </p>
-                  </div>
-                </li>
+                  <li>
+                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-<?php echo $counter ?>"><span><?php echo sprintf("%02d", $counter) ?></span> <?php echo get_the_title() ?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="accordion-list-<?php echo $counter ?>" class="collapse show" data-bs-parent=".accordion-list">
+                      <p>
+                        <?php echo the_excerpt() ?>
+                      </p>
+                    </div>
+                  </li>
                 <?php
-                $counter = $counter + 1;
+                  $counter = $counter + 1;
                 }
                 wp_reset_postdata();
 
@@ -129,9 +129,7 @@
         <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
           <h3>Voluptatem dignissimos provident quasi corporis voluptates</h3>
           <p class="fst-italic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua.
+            Our skills
           </p>
 
           <div class="skills-content">
@@ -178,46 +176,37 @@
     <div class="container" data-aos="fade-up">
       <div class="section-title">
         <h2>Services</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+        <p> Our services are as follows. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
           consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
+          in iste officiis commodi quidem hic quas. And they all liked it.</p>
       </div>
-
-      <div class="row">
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4><a href="">Lorem Ipsum</a></h4>
-            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+      <?php
+      $args = ['post_type' => 'services', 'post_status' => 'publish', 'posts_per_page' => 8, 'order' => 'ASC'];
+      $loop = new WP_Query($args);
+      if ($loop->have_posts()) {
+      ?>
+        <div class="row">
+        <?php
+        while($loop->have_posts()){
+          $loop->the_post();
+          $logoiconText = get_post_meta($post->ID, 'iconcode', true);
+          ?>
+           <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="<?php echo $logoiconText?>"></i></div>
+              <h4><a href="<?php echo the_permalink($post)?>"><?php echo the_title()?></a></h4>
+              <p><?php echo the_excerpt()?></p>
+            </div>
           </div>
+          <?php
+        }
+        ?>
         </div>
-
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-file"></i></div>
-            <h4><a href="">Sed ut perspici</a></h4>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-tachometer"></i></div>
-            <h4><a href="">Magni Dolores</a></h4>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-layer"></i></div>
-            <h4><a href="">Nemo Enim</a></h4>
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-          </div>
-        </div>
-
-      </div>
-
+      <?php
+      } else {
+        echo "Sorry there are no posts";
+      }
+      ?>
     </div>
   </section><!-- End Services Section -->
 
