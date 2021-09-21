@@ -292,10 +292,18 @@
           consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
           in iste officiis commodi quidem hic quas.</p>
       </div>
-
-      <div class="row">
-
-        <div class="col-lg-6">
+      <?php
+      $args = ['post_type' => 'team', 'post_status' => 'publish', 'posts_per_page' => 4, 'order' => 'ASC'];
+      $loop = new WP_Query($args);
+      if($loop->have_posts()){
+        while ($loop->have_posts()){
+          $loop->the_post();
+          echo "Yes";
+        }
+      } else echo "<h4>Please add some team members that will appear here";
+      ?>
+        <div class="row">
+        <div class="col-lg-6 mt-4 mt-lg-0">
           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
             <div class="pic"><img src="<?php echo get_template_directory_uri() ?>/assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
             <div class="member-info">
