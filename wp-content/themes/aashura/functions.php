@@ -19,9 +19,11 @@ require_once(get_template_directory() . '/inc/addThemeSupport.php');
 require_once(get_template_directory() . '/inc/customPostTypes/statements.php');
 require_once(get_template_directory() . '/inc/customPostTypes/services.php');
 require_once(get_template_directory() . '/inc/customPostTypes/portfolio.php');
+require_once(get_template_directory() . '/inc/customPostTypes/team.php');
 
-// meta box for services page
+// meta boxes for custom post types
 require_once(get_template_directory() . '/inc/metaboxes/services.php');
+require_once(get_template_directory() . '/inc/metaboxes/team.php');
 
 // ADMIN FUNCTIONS TO ADD CUSTOM OPTIONS PAGE AND SETTING API
 require(get_template_directory() . '/inc/function.admin.php');
