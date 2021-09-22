@@ -4,10 +4,10 @@ function aashura_add_admin_page()
 {
   //main menu page
   add_menu_page('Aashura Options', 'Aashura Settings', 'manage_options', 'aashura_general', 'aashura_landing_page_cb', 'dashicons-star-half', 1);
-
   // because wordpress creates first submenu page automatically with the same title as the main page, we need to write this line to avoid that
   add_submenu_page('aashura_general', 'Aashura General', 'General', 'manage_options', 'aashura_general', 'aashura_landing_page_cb', 111);
-
+  //submenu contact settings
+  add_submenu_page( 'aashura_general', 'Contact Settings', 'Contact Settings', 'manage_options', 'aashura_contact', 'aashura_contact_page_cb', 112 );
   add_action('admin_init', 'aashura_custom_settings');
 }
 /**
@@ -30,10 +30,16 @@ function aashura_custom_settings()
  
 }
 
+//landing page callback
 function aashura_landing_page_cb()
 {
   require_once(get_template_directory() . '/inc/templates/sunset.admin.general.php');
 }
+//contact page callback
+function aashura_contact_page_cb(){
+  require_once(get_template_directory() . '/inc/templates/aashura.admin.contact.php');
+}
+
 function aashura_settings_field_hero()
 {
   $hero_title = esc_attr(get_option('hero_title'));

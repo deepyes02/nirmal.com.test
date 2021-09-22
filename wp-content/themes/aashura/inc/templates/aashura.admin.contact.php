@@ -8,5 +8,4 @@ settings_errors();
 <?php do_settings_sections('aashura_contact_settings') ?>
 <?php submit_button('save me') ?>
 </form>
-
 <?php
