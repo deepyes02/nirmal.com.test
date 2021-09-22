@@ -1,245 +1,37 @@
 <?php get_header(); ?>
 <!-- ======= Hero Section ======= -->
-<?php get_template_part('template-parts/hero')?>
+<?php get_template_part('template-parts/hero') ?>
 <!-- End Hero -->
 <main id="main">
   <!-- ======= Cliens Section ======= -->
-  <?php get_template_part('template-parts/clients')?>
+  <?php get_template_part('template-parts/clients') ?>
   <!-- End Cliens Section -->
-  
-  <?php get_template_part('template-parts/about-us')?>
- <!-- ======= About Us Section ======= -->
- 
+  <?php get_template_part('template-parts/about-us') ?>
+  <!-- ======= About Us Section ======= -->
   <!-- End About Us Section -->
-
   <!-- ======= Why Us Section ======= -->
-  <?php get_template_part('template-parts/why-us')?>
+  <?php get_template_part('template-parts/why-us') ?>
   <!-- End Why Us Section -->
-
   <!-- ======= Skills Section ======= -->
-  <section id="skills" class="skills">
-    <div class="container" data-aos="fade-up">
-      <!--  -->
-      <div class="row">
-        <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/skills.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-          <h3>Voluptatem dignissimos provident quasi corporis voluptates</h3>
-          <p class="fst-italic">
-            Our skills
-          </p>
-
-          <div class="skills-content">
-
-            <div class="progress">
-              <span class="skill">HTML <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">CSS <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Photoshop <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part('template-parts/skills')?>
   <!-- End Skills Section -->
   <!-- ======= Services Section ======= -->
-  <section id="services" class="services section-bg">
-    <div class="container" data-aos="fade-up">
-      <div class="section-title">
-        <h2>Services</h2>
-        <p> Our services are as follows. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas. And they all liked it.</p>
-      </div>
-      <?php
-      $args = ['post_type' => 'services', 'post_status' => 'publish', 'posts_per_page' => 8, 'order' => 'ASC'];
-      $loop = new WP_Query($args);
-      if ($loop->have_posts()) {
-      ?>
-        <div class="row">
-          <?php
-          while ($loop->have_posts()) {
-            $loop->the_post();
-            $logoiconText = get_post_meta($post->ID, 'iconcode', true);
-          ?>
-            <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon-box">
-                <div class="icon"><i class="<?php echo $logoiconText ?>"></i></div>
-                <h4><a href="<?php echo the_permalink($post) ?>"><?php echo the_title() ?></a></h4>
-                <p><?php echo the_excerpt() ?></p>
-              </div>
-            </div>
-          <?php
-          }
-          ?>
-        </div>
-      <?php
-      } else {
-        echo "Sorry there are no posts";
-      }
-      ?>
-    </div>
-  </section>
-  
+<?php get_template_part('template-parts', 'services')?>
+
   <!-- End Services Section -->
 
   <!-- ======= Cta Section ======= -->
-  <section id="cta" class="cta">
-    <div class="container" data-aos="zoom-in">
+<?php get_template_part('template-parts/calltoaction')?>
 
-      <div class="row">
-        <div class="col-lg-9 text-center text-lg-start">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.</p>
-        </div>
-        <div class="col-lg-3 cta-btn-container text-center">
-          <a class="cta-btn align-middle" href="#">Call To Action</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  
   <!-- End Cta Section -->
 
   <!-- ======= Portfolio Section ======= -->
-  <section id="portfolio" class="portfolio">
-    <div class="container" data-aos="fade-up">
-      <div class="section-title">
-        <h2>Portfolio</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
-      </div>
-
-      <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <li data-filter="*" class="filter-active">All</li>
-        <li data-filter=".filter-app">App</li>
-        <li data-filter=".filter-card">Card</li>
-        <li data-filter=".filter-web">Web</li>
-      </ul>
-      <?php
-      $args = ['post_type' => 'portfolio', 'post_status' => 'publish', 'posts_per_page' => 12, 'order' => 'ASC'];
-      $loop = new WP_Query($args);
-      if ($loop->have_posts()) {
-      ?>
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          <?php
-          while ($loop->have_posts()) {
-            $loop->the_post();
-            $terms = get_the_terms($post, 'type');
-            $featured_img_url = get_the_post_thumbnail_url($post, 'full');
-            $altImage = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image_alt', true);
-            // var_dump($featured_img_url);
-            // var_dump ($terms[0]->name);
-          ?>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-<?php echo $terms[0]->name ?>">
-              <div class="portfolio-img"><img src="<?php echo $featured_img_url ?>" class="img-fluid" alt="<?php echo $altImage ?>"></div>
-              <div class="portfolio-info">
-                <h4><?php echo the_title() ?></h4>
-                <p><?php echo $terms[0]->name ?></p>
-                <a href="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          <?php
-          }
-          ?>
-        </div>
-      <?php
-      } else {
-        echo "<h4>Sorry no data available</h4>";
-      }
-      wp_reset_postdata();
-      ?>
-    </div>
-  </section><!-- End Portfolio Section -->
+  <?php get_template_part('template-parts/portfolio')?>
+<!-- End Portfolio Section -->
 
   <!-- ======= Team Section ======= -->
-  <section id="team" class="team section-bg">
-    <div class="container" data-aos="fade-up">
-
-      <div class="section-title">
-        <h2>Team</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
-      </div>
-      <?php
-      $args = ['post_type' => 'team', 'post_status' => 'publish', 'posts_per_page' => 4, 'order' => 'ASC'];
-      $loop = new WP_Query($args);
-      if ($loop->have_posts()) {
-      ?>
-        <div class="row">
-          <?php
-          while ($loop->have_posts()) {
-            $loop->the_post();
-            $featured_img_url = get_the_post_thumbnail_url($post, 'full');
-            $altImage = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image_alt', true);
-            $job_position = get_post_meta($post->ID, 'job_position', true);
-            $twitter_url = get_post_meta($post->ID, 'twitter_profile_url', true);
-            $facebook_url = get_post_meta($post->ID, 'facebook_profile_url', true);
-            $instagram_url = get_post_meta($post->ID, 'instagram_profile_url', true);
-            $linkedin_url = get_post_meta($post->ID, 'linkedin_profile_url', true);
-
-          ?>
-            <div class="col-lg-6 mt-4 mt-lg-0">
-              <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-                <div class="pic"><img src="<?php echo $featured_img_url ?>" class="img-fluid" alt=""></div>
-                <div class="member-info">
-                  <h4><?php echo the_title(); ?></h4>
-                  <span><?php echo $job_position ?></span>
-                  <p><?php echo the_excerpt() ?></p>
-                  <div class="social">
-                    <a href="<?php echo $twitter_url ?>"><i class="ri-twitter-fill"></i></a>
-                    <a href="<?php echo $facebook_url ?>"><i class="ri-facebook-fill"></i></a>
-                    <a href="<?php echo $instagram_url ?>"><i class="ri-instagram-fill"></i></a>
-                    <a href="<?php echo $linkedin_url ?>"> <i class="ri-linkedin-box-fill"></i> </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <?php
-          }
-          ?>
-        </div>
-      <?php
-      } else echo "<h4>Please add some team members that will appear here";
-      ?>
-    </div>
-
-    </div>
-  </section><!-- End Team Section -->
+  <?php get_template_part('template-parts/team')?>
+  <!-- End Team Section -->
 
   <!-- ======= Pricing Section ======= -->
   <section id="pricing" class="pricing">
@@ -302,47 +94,12 @@
       </div>
 
     </div>
-  </section><!-- End Pricing Section -->
+  </section>
+  <!-- End Pricing Section -->
 
   <!-- ======= Frequently Asked Questions Section ======= -->
-  <section id="faq" class="faq section-bg">
-    <div class="container" data-aos="fade-up">
-
-      <div class="section-title">
-        <h2>Frequently Asked Questions</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
-      </div>
-      <?php
-      $args = ['post_type' => 'faqs', 'post_status' => 'publish', 'posts_per_page' => 12, 'order' => 'ASC'];
-      $loop = new WP_Query($args);
-      if ($loop->have_posts()) {
-        ?>
-        <div class="faq-list">
-          <ul>
-        <?php
-        //code
-        $counter = 1;
-        while ($loop->have_posts()){
-          $loop->the_post();
-          ?>
-          <li data-aos="fade-up" data-aos-delay="100">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-<?php echo $counter?>"><?php echo the_title()?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-<?php echo $counter?>" class="collapse show" data-bs-parent=".faq-list">
-              <p><?php echo the_excerpt() ?></p>
-            </div>
-          </li>
-          <?php
-          $counter++;
-        }?></ul></div>
-      <?php
-      } else echo "Sorry there are no FAQs available now";
-      ?>
-      </div>
-
-    </div>
-  </section><!-- End Frequently Asked Questions Section -->
+<?php get_template_part('template-parts/faqs')?>
+  <!-- End Frequently Asked Questions Section -->
 
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">

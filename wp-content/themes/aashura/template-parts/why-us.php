@@ -8,7 +8,7 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Duis aute irure dolor in reprehenderit.
             </p>
-          </div>9
+          </div>
           <?php
           //grab custom post type statements
           $args = ['post_type' => 'statements', 'post_status' => 'publish', 'posts_per_page' => 8, 'order' => 'ASC'];
