@@ -8,9 +8,6 @@ function aashura_add_admin_page()
   // because wordpress creates first submenu page automatically with the same title as the main page, we need to write this line to avoid that
   add_submenu_page('aashura_general', 'Aashura General', 'General', 'manage_options', 'aashura_general', 'aashura_landing_page_cb', 111);
 
-  //submenu pages for the main page above
-  add_submenu_page('aashura_general', 'Aashura Contact', 'Contact Settings', 'manage_options', 'aashura_contact_settings', 'aashura_settings_page_cb', null);
-
   add_action('admin_init', 'aashura_custom_settings');
 }
 /**
@@ -30,15 +27,7 @@ function aashura_custom_settings()
   add_settings_section('aashura_settings_section_landing', 'Landing Page', 'aashura_sidebar_options', 'aashura_general');
   //settings field
   add_settings_field('sunset_landing_title', 'Landing Title', 'aashura_settings_field_hero', 'aashura_general', 'aashura_settings_section_landing');
-
-  //contact us settings group
-  register_setting('aashura_settings_contact', 'location');
-  register_setting('aashura_settings_contact', 'email');
-  register_setting('aashura_settings_contact', 'phone');
-  register_setting('aashura_settings_contact', 'googleMapEmbedSource');
-
-  add_settings_section('aashura_settings_section_contact', 'Contact', 'aashura_contact_options', 'aashura_contact_settings');
-
+ 
 }
 
 function aashura_landing_page_cb()
@@ -71,21 +60,12 @@ function aashura_settings_field_hero()
   
   <?php
 }
+
 function aashura_sidebar_options()
 {
  ?>
  <p>Select a picture for the landing page</p>
  <?php
-}
-
-function aashura_contact_options(){
-  echo "Contact Options";
-}
-
-
-function aashura_settings_page_cb()
-{
-  require_once(get_template_directory() . '/inc/templates/aashura.admin.contact.php');
 }
 
 add_action('admin_menu', 'aashura_add_admin_page');
