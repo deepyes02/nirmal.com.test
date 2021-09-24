@@ -2,9 +2,11 @@
 function aashura_add_metabox_pricing()
 {
 	add_meta_box('pricing', 'Pricing', 'aashura_add_metabox_pricing_cb', 'pricing', 'normal', 'default');
-	add_meta_box('features', 'Pricing Features', 'aashura_add_meta_box_feature', 'pricing', 'normal', 'default');
+	add_meta_box('feature', 'Features', 'aashura_add_meta_box_feature_cb', 'pricing', 'normal', 'default');
 }
+add_action('admin_menu', 'aashura_add_metabox_pricing', 10);
 
+//Pricing callback
 function aashura_add_metabox_pricing_cb($post)
 {
 	$pricing = get_post_meta($post->ID, 'pricing', true);
@@ -13,25 +15,22 @@ function aashura_add_metabox_pricing_cb($post)
 	<input name="pricing" type="number" max="1000" min="0" value="<?php echo $pricing ?>">
 <?php
 }
-add_action('admin_menu', 'aashura_add_metabox_pricing', 10);
-add_action('admin_menu', 'aashura_add_meta_box_feature', 11);
 
-//meta box for features
-
-function aashura_add_meta_box_feature($post)
+//Features Callback
+function aashura_add_meta_box_feature_cb($post)
 {
 	$feature1 = get_post_meta($post->ID, 'feature1', true);
 ?>
 	<div id="features_container">
 		<div class="features_container__inner">
-			<input name="feature1" id="feature1" type="text" value="<?php echo $feature1 ?>" />
+			<input name="feature1" type="text" maxlength="80" value="<?php echo $feature1 ?>">
 		</div>
 	</div>
 <?php
 }
 
 //save
-function aashura_services_save_meta_pricing($post_id, $post)
+function aashura_save_metabox_pricing($post_id, $post)
 {
 	//check user permissions
 	$post_type = get_post_type_object($post->post_type);
@@ -63,4 +62,4 @@ function aashura_services_save_meta_pricing($post_id, $post)
 	}
 }
 
-add_action('save_post', 'aashura_services_save_meta_pricing', 10, 2);
+add_action('save_post', 'aashura_save_metabox_pricing', 10, 2);
