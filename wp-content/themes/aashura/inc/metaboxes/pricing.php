@@ -20,23 +20,32 @@ function aashura_add_metabox_pricing_cb($post)
 function aashura_add_meta_box_feature_cb($post)
 {
 	$feature1 = get_post_meta($post->ID, 'feature1', true);
-	$feature1_val = get_post_meta($post->ID, 'feature1_field', true);
+	$feature1_val = get_post_meta($post->ID, 'feature1_val', true);
 	$feature2 = get_post_meta($post->ID, 'feature2', true);
+	$feature2_val = get_post_meta($post->ID, 'feature2_val', true);
 	$feature3 = get_post_meta($post->ID, 'feature3', true);
+	$feature3_val = get_post_meta($post->ID, 'feature3_field', true);
 	$feature4 = get_post_meta($post->ID, 'feature4', true);
+	$feature4_val = get_post_meta($post->ID, 'feature4_field', true);
 	$feature5 = get_post_meta($post->ID, 'feature5', true);
+	$feature5_val = get_post_meta($post->ID, 'feature5_field', true);
 ?>
 	<div id="features_container">
 		<div class="features_container__inner">
 			<input name="feature1" id="feature1" type="text" maxlength="80" value="<?php echo $feature1 ?>">
-			<select name="feature1_field" id="feature1_field" class="postbox">
+			<select name="feature1_val" id="feature1_val" class="postbox">
 				<option value="">Feature Available / Not Available</option>
-				<option value="something" <?php selected($feature1_val, 'something'); ?>>Something</option>
-				<option value="else" <?php selected($feature1_val, 'else'); ?>>Else</option>
+				<option value="available" <?php selected($feature1_val, 'available'); ?>>Available</option>
+				<option value="notAvailable" <?php selected($feature1_val, 'notAvailable'); ?>>Not Available</option>
 			</select>
 		</div>
 		<div class="features_container__inner">
 			<input name="feature2" id="feature2" type="text" maxlength="80" value="<?php echo $feature2 ?>">
+			<select name="feature2_val" id="feature2_val" class="postbox">
+				<option value="">Feature Available / Not Available</option>
+				<option value="available" <?php selected($feature2_val, 'available'); ?>>Available</option>
+				<option value="notAvailable" <?php selected($feature2_val, 'notAvailable'); ?>>Not Available</option>
+			</select>
 		</div>
 		<div class="features_container__inner">
 			<input name="feature3" id="feature3" type="text" maxlength="80" value="<?php echo $feature3 ?>">
@@ -88,8 +97,12 @@ function aashura_save_metabox_pricing($post_id, $post)
 	}
 
 	//save metabox 1
-	if(isset($_POST['feature1_field'])){
-		update_post_meta($post_id, 'feature1_field', $_POST['feature1_field']);
-	} else delete_post_meta($post_id, 'feature1_field');
+	if (isset($_POST['feature1_val'])) {
+		update_post_meta($post_id, 'feature1_val', $_POST['feature1_val']);
+	} else delete_post_meta($post_id, 'feature1_val');
+//save metabox 2
+	if (isset($_POST['feature2_val'])) {
+		update_post_meta($post_id, 'feature2_val', $_POST['feature2_val']);
+	} else delete_post_meta($post_id, 'feature2_val');
 }
 add_action('save_post', 'aashura_save_metabox_pricing', 10, 2);
