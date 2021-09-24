@@ -1,12 +1,20 @@
 ## Aashura ##
-
+<strong>devilishly wordpress</strong>
 
 ## Introduction ##
-Build several backend features for wordpress programatically without using any plugin.
+A General Purpose Web Application built on wordpress coding standard
 
-## Clone this theme into your wordpress ##
-Clone this at the root directory (containing wp-content,wp-includes,wp-admin folders) of your wordpress project
+## Coding Areas: ##
+1. Custom Post Types
+2. Custom Admin Settings and Frontend rendering.
+3. Custom Meta Boxes
+4. Contact Form
+
+## Follow this ##
+Clone at the root _directory_ (containing wp-content,wp-includes,wp-admin folders) your wordpress project
+
+You can find it below
 ```git
-#bash
+#Clone at the root directory (containing wp-content,wp-includes,wp-admin folders) your wordpress project
 git clone https://github.com/deepyes02/nirmal.com.test.git
 ```

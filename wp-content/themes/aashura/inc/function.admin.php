@@ -7,7 +7,7 @@ function aashura_add_admin_page()
   // because wordpress creates first submenu page automatically with the same title as the main page, we need to write this line to avoid that
   add_submenu_page('aashura_general', 'Aashura General', 'General', 'manage_options', 'aashura_general', 'aashura_landing_page_cb', 111);
   //submenu contact settings
-  add_submenu_page( 'aashura_general', 'Contact Settings', 'Contact Settings', 'manage_options', 'aashura_contact', 'aashura_contact_page_cb', 112 );
+  add_submenu_page( 'aashura_general', 'Contact Settings', 'Contact & Map', 'manage_options', 'aashura_contact', 'aashura_contact_page_cb', 112 );
   add_action('admin_init', 'aashura_custom_settings');
 }
 /**
@@ -22,18 +22,24 @@ function aashura_custom_settings()
   register_setting('aasura_settings_personal', 'hero_subtitle');
   register_setting('aasura_settings_personal', 'hero_get_started_link');
   register_setting('aasura_settings_personal', 'hero_youtube_link');
-
   //settings section
   add_settings_section('aashura_settings_section_landing', 'Landing Page', 'aashura_sidebar_options', 'aashura_general');
   //settings field
   add_settings_field('sunset_landing_title', 'Landing Title', 'aashura_settings_field_hero', 'aashura_general', 'aashura_settings_section_landing');
- 
+
+  //settings group contact
+  register_setting( 'aashura_settings_contact', 'location');
+  register_setting( 'aashura_settings_contact', 'email');
+  register_setting( 'aashura_settings_contact', 'phone');
+
+  add_settings_section( 'aashura_settings_section_contact', 'Contact Page', 'aashura_contact_options', 'aashura_contact' );
+  add_settings_field( 'aashura_contact_page', 'Enter Contact Details', 'aashura_settings_field_contact', 'aashura_contact', 'aashura_settings_section_contact' );
 }
 
 //landing page callback
 function aashura_landing_page_cb()
 {
-  require_once(get_template_directory() . '/inc/templates/sunset.admin.general.php');
+  require_once(get_template_directory() . '/inc/templates/aashura.admin.general.php');
 }
 //contact page callback
 function aashura_contact_page_cb(){
@@ -67,10 +73,32 @@ function aashura_settings_field_hero()
   <?php
 }
 
+function aashura_settings_field_contact(){
+  /*
+  register_setting( 'aashura_settings_contact', 'location');
+  register_setting( 'aashura_settings_contact', 'email');
+  register_setting( 'aashura_settings_contact', 'phone');
+  */
+  $location = esc_attr(get_option('location'));
+  $email = esc_attr(get_option('email'));
+  $phone = esc_attr(get_option('phone'));
+  ?>
+  <p class="description">Type in your Location</p>
+  <label for="location">Enter your full Company Address</label>
+  <input type="text" name="location" value="<?php echo $location?>" maxlength="100">
+  <?php
+}
+
 function aashura_sidebar_options()
 {
  ?>
  <p>Select a picture for the landing page</p>
+ <?php
+}
+function aashura_contact_options()
+{
+ ?>
+ <p>Edit the Contact Page</p>
  <?php
 }
 

@@ -9,29 +9,36 @@
  * @since Aashura 1.0
  * @author deepesh dhakal
  */
-//Very first functions (--even before init)
-//Declare the GLOBAL CONSTANTS
+//primary functions (--before init)
+//GLOBAL CONSTANTS - will I need this???
 require_once( get_template_directory() . '/inc/globar-var.admin.php');
-//Wordpress Theme Support - Enabling default features
+//Enable Theme Support and default features
 require_once(get_template_directory() . '/inc/addThemeSupport.php');
 
-// Custom Post Type
+
+//Enqueue Public libraries and scripts
+require_once(get_template_directory() . '/inc/enqueue.public.php');
+//Enqueue Admin Scripts & Libraries
+require(get_template_directory() . '/inc/enqueue.admin.php');
+
+// Objects and Classes - custom post type functions
 require_once(get_template_directory() . '/inc/customPostTypes/statements.php');
 require_once(get_template_directory() . '/inc/customPostTypes/services.php');
 require_once(get_template_directory() . '/inc/customPostTypes/portfolio.php');
 require_once(get_template_directory() . '/inc/customPostTypes/team.php');
 require_once(get_template_directory() . '/inc/customPostTypes/faqs.php');
 require_once(get_template_directory() . '/inc/customPostTypes/skills.php');
+require_once(get_template_directory() . '/inc/customPostTypes/pricing.php');
 
-// meta boxes for custom post types
+// meta box functions
 require_once(get_template_directory() . '/inc/metaboxes/services.php');
 require_once(get_template_directory() . '/inc/metaboxes/team.php');
 require_once(get_template_directory() . '/inc/metaboxes/skills.php');
+require_once(get_template_directory() . '/inc/metaboxes/pricing.php');
 
-// ADMIN FUNCTIONS TO ADD CUSTOM OPTIONS PAGE AND SETTING API
+// Backend and Design
 require(get_template_directory() . '/inc/function.admin.php');
 require_once(get_template_directory() . '/inc/navigation_design.public.php');
-//admin styles/scripts enqueue
-require(get_template_directory() . '/inc/enqueue.admin.php');
-//Enqueue -  Public JS/CSS libraries and scripts.
-require_once(get_template_directory() . '/inc/enqueue.public.php');
+
+
+## Repo: https://github.com/deepyes02/nirmal.com.test

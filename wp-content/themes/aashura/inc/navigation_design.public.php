@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  * @package WordPress
@@ -6,21 +7,22 @@
  * @since Aashura 1.0
  * @author deepesh
  */
- // Important functions that can run before the init hook
+// Important functions that can run before the init hook
 
- /**
-  * Navigation Menu Registration. Can add/edit menus as required.
-  * @author deepesh
-   * @since Aashura 1.0
-  */
-if ( ! function_exists( 'aasura_myfirsttheme_setup' ) ) {
-  add_action('after_setup_theme', 'aasura_myfirsttheme_setup');
-  function aasura_myfirsttheme_setup(){
-    register_nav_menus( array (
-      'primary'   => __('Primary Menu', 'aashura'),
-      #add more menus here
-    ));
-  };
+/**
+ * Navigation Menu Registration. Can add/edit menus as required.
+ * @author deepesh
+ * @since Aashura 1.0
+ */
+if (!function_exists('aasura_myfirsttheme_setup')) {
+	add_action('after_setup_theme', 'aasura_myfirsttheme_setup');
+	function aasura_myfirsttheme_setup()
+	{
+		register_nav_menus(array(
+			'primary'   => __('Primary Menu', 'aashura'),
+			#add more menus here
+		));
+	};
 }
 /**
  * Add custom classes to 'li' element of nav object
@@ -28,11 +30,12 @@ if ( ! function_exists( 'aasura_myfirsttheme_setup' ) ) {
  * @since Aashura 1.0
  * @return Array
  */
-function aasura_add_additional_li_classes($classes, $item, $args){
-  if($args->theme_location == 'primary'){
-    $classes[] = $args->add_li_class;
-  }
-  return $classes;
+function aasura_add_additional_li_classes($classes, $item, $args)
+{
+	if ($args->theme_location == 'primary') {
+		$classes[] = $args->add_li_class;
+	}
+	return $classes;
 }
 add_filter('nav_menu_css_class', 'aasura_add_additional_li_classes', 1, 3);
 /**
@@ -41,9 +44,10 @@ add_filter('nav_menu_css_class', 'aasura_add_additional_li_classes', 1, 3);
  * @package Aashura
  * @return Array 
  */
-function aasura_add_class_href_nav_menu( $atts, $item, $args ) {
-  $class = 'nav-link scrollto'; // or something based on $item
-  $atts['class'] = $class;
-  return $atts;
+function aasura_add_class_href_nav_menu($atts, $item, $args)
+{
+	$class = 'nav-link scrollto'; // or something based on $item
+	$atts['class'] = $class;
+	return $atts;
 }
-add_filter( 'nav_menu_link_attributes', 'aasura_add_class_href_nav_menu', 10, 3 );
+add_filter('nav_menu_link_attributes', 'aasura_add_class_href_nav_menu', 10, 3);
