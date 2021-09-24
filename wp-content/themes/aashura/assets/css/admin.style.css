@@ -1,0 +1,12 @@
+/*ADMIN STYLES*/
+
+/*pricing page*/
+/*
+#features_container{
+	display: flex;
+	gap:5px;
+	flex-direction: column;
+}
+#features_container .features_container__inner input {
+	width:80%;
+}
