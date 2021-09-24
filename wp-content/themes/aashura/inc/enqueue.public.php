@@ -1,7 +1,7 @@
 <?php
 $vendorFilePath = get_template_directory_uri() . '/assets/vendor';
 add_action('wp_enqueue_scripts', 'aashura_enqueue_public_styles', 10);
-add_action('wp_enqueue_scripts', 'aashura_enqueue_public_scripts', 11);
+add_action('wp_enqueue_scripts', 'aashura_enqueue_public_scripts', 10);
 /**
  * Enqueue Necessary StyleSheet
  * 

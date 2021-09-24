@@ -29,7 +29,6 @@ function aashura_add_meta_box_feature_cb($post)
 	$feature4_val = get_post_meta($post->ID, 'feature4_val', true);
 	$feature5 = get_post_meta($post->ID, 'feature5', true);
 	$feature5_val = get_post_meta($post->ID, 'feature5_val', true);
-
 ?>
 	<div id="features_container">
 		<div class="features_container__inner">
