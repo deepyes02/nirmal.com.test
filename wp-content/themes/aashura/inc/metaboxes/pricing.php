@@ -20,6 +20,7 @@ function aashura_add_metabox_pricing_cb($post)
 function aashura_add_meta_box_feature_cb($post)
 {
 	$feature1 = get_post_meta($post->ID, 'feature1', true);
+	$feature1_val = get_post_meta($post->ID, 'feature1_field', true);
 	$feature2 = get_post_meta($post->ID, 'feature2', true);
 	$feature3 = get_post_meta($post->ID, 'feature3', true);
 	$feature4 = get_post_meta($post->ID, 'feature4', true);
@@ -28,6 +29,11 @@ function aashura_add_meta_box_feature_cb($post)
 	<div id="features_container">
 		<div class="features_container__inner">
 			<input name="feature1" id="feature1" type="text" maxlength="80" value="<?php echo $feature1 ?>">
+			<select name="feature1_field" id="feature1_field" class="postbox">
+				<option value="">Feature Available / Not Available</option>
+				<option value="something" <?php selected($feature1_val, 'something'); ?>>Something</option>
+				<option value="else" <?php selected($feature1_val, 'else'); ?>>Else</option>
+			</select>
 		</div>
 		<div class="features_container__inner">
 			<input name="feature2" id="feature2" type="text" maxlength="80" value="<?php echo $feature2 ?>">
@@ -69,7 +75,7 @@ function aashura_save_metabox_pricing($post_id, $post)
 		//delete
 		delete_post_meta($post_id, 'pricing');
 	}
-//save the features dynamically using array
+	//save the features dynamically using array
 	$features = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5'];
 	// update / delte features value
 	foreach ($features as $feature) {
@@ -80,59 +86,10 @@ function aashura_save_metabox_pricing($post_id, $post)
 			delete_post_meta($post_id, $feature);
 		}
 	}
+
+	//save metabox 1
+	if(isset($_POST['feature1_field'])){
+		update_post_meta($post_id, 'feature1_field', $_POST['feature1_field']);
+	} else delete_post_meta($post_id, 'feature1_field');
 }
-
-
 add_action('save_post', 'aashura_save_metabox_pricing', 10, 2);
-
-
-function wporg_add_custom_box() {
-    $screens = [ 'pricing' ];
-    foreach ( $screens as $screen ) {
-        add_meta_box(
-            'wporg_box_id',                 // Unique ID
-            'Custom Meta Box Title',      // Box title
-            'wporg_custom_box_html',  // Content callback, must be of type callable
-            $screen                            // Post type
-        );
-    }
-}
-add_action( 'add_meta_boxes', 'wporg_add_custom_box' );
-
-function wporg_custom_box_html( $post ) {
-    $value = get_post_meta( $post->ID, '_wporg_meta_key', true );
-    $value2 = get_post_meta( $post->ID, '_wporg_meta_key_2', true );
-    ?>
-    <label for="wporg_field">Description for this field</label>
-    <select name="wporg_field" id="wporg_field" class="postbox">
-        <option value="">Select something...</option>
-        <option value="something" <?php selected( $value, 'something' ); ?>>Something</option>
-        <option value="else" <?php selected( $value, 'else' ); ?>>Else</option>
-    </select>
-
-<label for="wporg_field2">Description for this field</label>
-    <select name="wporg_field2" id="wporg_field2" class="postbox">
-        <option value="">Select something...</option>
-        <option value="something" <?php selected( $value2, 'something' ); ?>>Something</option>
-        <option value="else" <?php selected( $value2, 'else' ); ?>>Else</option>
-    </select>
-    <?php
-}
-
-function wporg_save_postdata( $post_id ) {
-    if ( array_key_exists( 'wporg_field', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            '_wporg_meta_key',
-            $_POST['wporg_field']
-        );
-    }
- if ( array_key_exists( 'wporg_field2', $_POST ) ) {
-        update_post_meta(
-            $post_id,
-            '_wporg_meta_key_2',
-            $_POST['wporg_field2']
-        );
-    }
-}
-add_action( 'save_post', 'wporg_save_postdata' );
