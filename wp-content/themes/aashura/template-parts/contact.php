@@ -47,7 +47,7 @@
 							<input type="text" name="name" class="form-control" id="name" required>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="name">Your Email</label>
+							<label for="email">Your Email</label>
 							<input type="email" class="form-control" name="email" id="email" required>
 						</div>
 					</div>

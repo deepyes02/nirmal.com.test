@@ -31,12 +31,14 @@ require_once(get_template_directory() . '/inc/customPostTypes/faqs.php');
 require_once(get_template_directory() . '/inc/customPostTypes/skills.php');
 require_once(get_template_directory() . '/inc/customPostTypes/pricing.php');
 require_once(get_template_directory() . '/inc/customPostTypes/brands.php');
+require_once(get_template_directory() . '/inc/customPostTypes/contacts.php');
 
 // meta box functions
 require_once(get_template_directory() . '/inc/metaboxes/services.php');
 require_once(get_template_directory() . '/inc/metaboxes/team.php');
 require_once(get_template_directory() . '/inc/metaboxes/skills.php');
 require_once(get_template_directory() . '/inc/metaboxes/pricing.php');
+require_once(get_template_directory() . '/inc/metaboxes/contacts.php');
 
 // Backend and Design
 require(get_template_directory() . '/inc/function.admin.php');
