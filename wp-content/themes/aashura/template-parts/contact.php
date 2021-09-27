@@ -61,8 +61,8 @@
 					</div>
 					<div class="my-3">
 						<div class="loading">Loading</div>
-						<div class="error-message"></div>
-						<div class="sent-message">Your message has been sent. Thank you!</div>
+						<div class="error-message"><?php echo $message?></div>
+						<div class="sent-message"><?php echo $message?></div>
 					</div>
 					<div class="text-center"><button type="submit">Send Message</button></div>
 				</form>
