@@ -4,6 +4,9 @@
 ## Introduction ##
 A General Purpose Web Application built on wordpress coding standard
 
+## Databse ##
+Database import file: nirmal.com.test/wp-content/database_export/nirmal_com.sql
+
 ## Coding Areas: ##
 1. Custom Post Types
 2. Custom Admin Settings and Frontend rendering.
