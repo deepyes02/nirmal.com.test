@@ -18,7 +18,7 @@ function aashur_cpp_services(){
     'labels'  => $labels,
     'public'  => true,
     'has_archive' => false,
-    'menu_icon'   => 'dashicons-format-gallery',
+    'menu_icon'   => 'dashicons-heart',
     'show_ui'     => true,
     'publicly_queryable'  => true,
     'query_var'     => true,

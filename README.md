@@ -1,5 +1,5 @@
 ## Aashura ##
-<strong>devilishly wordpress</strong>
+<strong>devilishly wordpress</strong>by deepesh
 
 ## Introduction ##
 A General Purpose Web Application built on wordpress coding standard
@@ -10,6 +10,8 @@ A General Purpose Web Application built on wordpress coding standard
 3. Custom Meta Boxes
 4. Contact Form
 5. Custom Widgets
+6. Custom Emails
+7. Database Update from Contact Form and Newsletters
 
 ## Follow this ##
 Clone at the root _directory_ (containing wp-content,wp-includes,wp-admin folders) your wordpress project

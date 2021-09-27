@@ -18,7 +18,7 @@ function aashur_cpp_skills(){
     'labels'  => $labels,
     'public'  => true,
     'has_archive' => false,
-    'menu_icon'   => 'dashicons-format-gallery',
+    'menu_icon'   => 'dashicons-hammer',
     'show_ui'     => true,
     'publicly_queryable'  => true,
     'query_var'     => true,
