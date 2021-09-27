@@ -32,6 +32,7 @@ require_once(get_template_directory() . '/inc/customPostTypes/skills.php');
 require_once(get_template_directory() . '/inc/customPostTypes/pricing.php');
 require_once(get_template_directory() . '/inc/customPostTypes/brands.php');
 require_once(get_template_directory() . '/inc/customPostTypes/contacts.php');
+require_once(get_template_directory() . '/inc/customPostTypes/newsletters.php');
 
 // meta box functions
 require_once(get_template_directory() . '/inc/metaboxes/services.php');

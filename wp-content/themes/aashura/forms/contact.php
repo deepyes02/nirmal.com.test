@@ -10,12 +10,24 @@ if ($_POST['name'] && $_POST['email'] && $_POST['subject'] && $_POST['message'])
 		'comment_status'	=> 'closed',
 		'ping_status'		=> 'closed'
 	), false, true);
+//update post meta
 	if ($post_id) {
 		//insert post meta
-update_post_meta($post_id, 'contactEmail', sanitize_text_field($_POST['email']), '');
-update_post_meta($post_id, 'contactSubject', sanitize_text_field($_POST['subject']), '');
-update_post_meta($post_id, 'contactMessage', sanitize_text_field($_POST['message']), '');
-		$message = "Great your message has been sent.";
+		update_post_meta($post_id, 'contactEmail', sanitize_text_field($_POST['email']), '');
+		update_post_meta($post_id, 'contactSubject', sanitize_text_field($_POST['subject']), '');
+		update_post_meta($post_id, 'contactMessage', sanitize_text_field($_POST['message']), '');
+		
+
+		//send email
+		$admin_email = get_bloginfo('admin_email');
+		$to = $admin_email;
+		$subject = $_POST['subject'];
+		$body = $_POST['message'];
+		$headers = array('Content-Type: text/html; charset=UTF-8');
+		$message = $_POST['message'] . "<br>" . "<p>This automated email was received because someone filled up the contact form in your website " . get_site_url() . "</p>";
+		$message .= "<br><strong>The Admin</strong>";
+		//send email
+		wp_mail($to, $subject, $message, $headers);
 	} else $message = "Sorry, your message couldn't be sent. Please try again";
 	return $message;
 }

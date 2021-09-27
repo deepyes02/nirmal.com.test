@@ -7,8 +7,11 @@
 				<div class="col-lg-6">
 					<h4>Join Our Newsletter</h4>
 					<p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-					<form action="options.php" method="post">
-						<input type="email" name="email"><input type="submit" value="Subscribe">
+<?php $formLocation = get_template_directory_uri() . '/forms/newsletter.php';
+				?>
+				<form action="<?php echo $formLocation ?>" method="post">
+					<form action="<?php echo $formLocation?>" method="post">
+						<input type="email" name="newsletter_email" method="post" role="form" class="php-email-form"><input type="submit" value="Subscribe">
 					</form>
 				</div>
 			</div>
