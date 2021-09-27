@@ -44,6 +44,5 @@
   <!-- ======= Contact Section ======= -->
   <?php get_template_part('template-parts/contact')?>
   <!-- End Contact Section -->
-
 </main><!-- End #main -->
 <?php get_footer(); ?>

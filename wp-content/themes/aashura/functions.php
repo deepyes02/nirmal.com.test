@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Wordpress Development Tools
  *
@@ -11,7 +12,7 @@
  */
 //primary functions (--before init)
 //GLOBAL CONSTANTS - will I need this???
-require_once( get_template_directory() . '/inc/globar-var.admin.php');
+require_once(get_template_directory() . '/inc/globar-var.admin.php');
 //Enable Theme Support and default features
 require_once(get_template_directory() . '/inc/addThemeSupport.php');
 
@@ -29,6 +30,7 @@ require_once(get_template_directory() . '/inc/customPostTypes/team.php');
 require_once(get_template_directory() . '/inc/customPostTypes/faqs.php');
 require_once(get_template_directory() . '/inc/customPostTypes/skills.php');
 require_once(get_template_directory() . '/inc/customPostTypes/pricing.php');
+require_once(get_template_directory() . '/inc/customPostTypes/brands.php');
 
 // meta box functions
 require_once(get_template_directory() . '/inc/metaboxes/services.php');
@@ -42,3 +44,7 @@ require_once(get_template_directory() . '/inc/navigation_design.public.php');
 
 
 ## Repo: https://github.com/deepyes02/nirmal.com.test
+
+
+//enable dashboard widgetss
+require_once(get_template_directory() . '/inc/widgets/aashura-main-dashboard.php');

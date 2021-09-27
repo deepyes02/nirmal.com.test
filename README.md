@@ -9,6 +9,7 @@ A General Purpose Web Application built on wordpress coding standard
 2. Custom Admin Settings and Frontend rendering.
 3. Custom Meta Boxes
 4. Contact Form
+5. Custom Widgets
 
 ## Follow this ##
 Clone at the root _directory_ (containing wp-content,wp-includes,wp-admin folders) your wordpress project
