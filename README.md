@@ -4,7 +4,7 @@
 ## Introduction ##
 A General Purpose Web Application built on wordpress coding standard
 
-## Databse ##
+## Database ##
 Database import file: nirmal.com.test/wp-content/database_export/nirmal_com.sql
 
 ## Coding Areas: ##
